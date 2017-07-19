@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="customerService" class="com.javacodepoint.customer.services.CustomerService">
+		<property name="name" value="Ravi kumar Verma" />
+		<property name="address" value="Patiala Punjab" />
+	</bean>
+
+	<bean id="AOPAroundMethodBean" class="com.javacodepoint.aop.AOPAroundMethod" />
+
+	<bean id="customerServiceBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+		<property name="target" ref="customerService" />
+
+		<property name="interceptorNames">
+			<list>
+				<value>AOPAroundMethodBean</value>
+			</list>
+		</property>
+	</bean>
+</beans>
